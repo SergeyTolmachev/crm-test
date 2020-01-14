@@ -1,0 +1,39 @@
+{
+  "name": "crm-test",
+  "version": "1.0.0",
+  "description": "тестовое",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node ./src/app.ts",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SergeyTolmachev/crm-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SergeyTolmachev/crm-test/issues"
+  },
+  "homepage": "https://github.com/SergeyTolmachev/crm-test#readme",
+  "dependencies": {
+    "@types/pg": "^7.14.1",
+    "ajv": "^6.10.2",
+    "alasql": "^0.5.3",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "jest": "^24.9.0",
+    "pg": "^7.17.1",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/preset-typescript": "^7.8.3",
+    "@types/express": "^4.17.2",
+    "@types/node": "^13.1.6",
+    "babel-jest": "^24.9.0"
+  }
+}
