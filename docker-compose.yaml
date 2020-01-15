@@ -7,6 +7,12 @@ services:
       restart: always
       ports:
         - "3000:3000"
+      environment:
+        - "DB_USER=postgres"
+        - "DB_HOST=postgres"
+        - "DB_DB=mydb"
+        - "DB_PASSWORD=12345678"
+        - "DB_PORT=5432"
     postgres:
       image: postgres:10.11
       environment:

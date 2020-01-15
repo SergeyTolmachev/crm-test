@@ -7,8 +7,8 @@ client.connect()
     .then(() => {
     console.log('Соединение с базой данных успешно установлено');
     })
-    .catch((err) => {
-        console.log('Ошибка подключения к базе данных: ', err);
-    });
+    .catch(() => {});
 
-export default client;
+const query = async (query: string, params: [any]) => { return client.query(query, params)};
+
+export { client, query };

@@ -1,4 +1,5 @@
-import { validate } from "../utils";
+import {query} from '../config/db';
+import { validate } from '../utils';
 
 interface Schema {
     type: string,
@@ -7,15 +8,23 @@ interface Schema {
     properties: any,
 }
 
+interface SchemaOptions {
+    customQuery?: any,
+}
+
 export class BaseSchema{
     private readonly query: any;
     private readonly name: string;
     private readonly schema: any;
 
-    constructor(name: string, schema: Schema, query: any) {
+    constructor(name: string, schema: Schema, options?: SchemaOptions) {
         this.query = query;
         this.name = name;
         this.schema = schema;
+        if (options) {
+            const { customQuery } = options;
+            this.query = customQuery || query;
+        }
     }
 
     async save(values: any) {
@@ -37,8 +46,9 @@ export class BaseSchema{
         return rows[0];
     }
 
-    async findHighest(property: string) {
-        const { rows } = await this.query(`SELECT * FROM ${this.name} ORDER BY ${property} DESC LIMIT 1`);
+    async findOne(properties: { order?: string }) {
+        const { order } = properties;
+        const { rows } = await this.query(`SELECT * FROM ${this.name} ORDER BY ${order} DESC LIMIT 1`);
         return rows[0];
     }
 

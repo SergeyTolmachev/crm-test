@@ -8,14 +8,30 @@
 		{
 			"name": "Create",
 			"request": {
-				"method": "GET",
-				"header": [],
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": ""
+					"raw": "{\n\t\"title\": \"Добавленная задача\",\n\t\"priority\": 31\n}"
 				},
 				"url": {
-					"raw": ""
+					"raw": "http://localhost:3000/api/task",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"task"
+					]
 				}
 			},
 			"response": []
@@ -23,14 +39,36 @@
 		{
 			"name": "Delete",
 			"request": {
-				"method": "GET",
-				"header": [],
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": ""
+					"raw": "{\n\t\"id\": 8\n}"
 				},
 				"url": {
-					"raw": ""
+					"raw": "http://localhost:3000/api/task?id=7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"task"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "7"
+						}
+					]
 				}
 			},
 			"response": []
@@ -45,7 +83,16 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": ""
+					"raw": "http://localhost:3000/api/task",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"task"
+					]
 				}
 			},
 			"response": []
@@ -60,7 +107,17 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": ""
+					"raw": "http://localhost:3000/api/task/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"task",
+						"list"
+					]
 				}
 			},
 			"response": []
