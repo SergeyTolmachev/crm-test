@@ -1,27 +1,39 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
+import validateQuery from "../middlewares/validateQuery";
 
 import { task } from "../schemas";
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
-    const result = await task.findOne();
+const querySchema = {
+    type: 'object',
+    additionalProperties: false,
+    required: ['id'],
+    properties: {
+        id: {
+            type: 'integer',
+            minimum: 1,
+        }
+    }
+};
+
+router.get('/', async (req: Request, res: Response) => {
+    const result = await task.findHighestPriority();
     return res.json(result);
 });
 
-router.get('/list', async (req, res) => {
+router.get('/list', async (req: Request, res: Response) => {
     const result = await task.findAll();
     return res.json(result);
 });
 
-router.post('/', async (req, res) => {
-    const { title, priority } = req.body;
-    const result = await task.save(title, priority);
+router.post('/', async (req: Request, res: Response) => {
+    const result = await task.save(req.body);
     return res.json(result);
 });
 
-router.delete('/', async (req, res) => {
-    const { id } = req.body;
+router.delete('/', validateQuery(querySchema), async (req: Request, res: Response) => {
+    const { id } = req.query;
     const result = await task.destroy(id);
     return res.json(result);
 });
